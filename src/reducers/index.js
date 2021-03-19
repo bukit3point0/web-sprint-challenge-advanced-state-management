@@ -11,7 +11,7 @@ export const initialState = {
     smurfs: [],
     isLoading: false,
     error: "",
-    errorC: ""
+    badSubmit: ""
 }
 
 export const reducer = (state=initialState, action) => {
@@ -51,7 +51,7 @@ export const reducer = (state=initialState, action) => {
         case(ERROR_CODE):
             return ({
                 ...state,
-                errorC: action.payload
+                badSubmit: action.payload
             })
         default:
             return state;

@@ -24,11 +24,10 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.errorCode("Name, position and nickname fields are required.")
+            props.errorCode("Name, position, and nickname fields are required.")
         } else {props.addSmurf(state)}
     }
-    console.log(`error code`, props.errorC)
-
+    console.log(`error code`, props.badSubmit)
     // const errorMessage = "";
 
     return(<section>
@@ -51,7 +50,7 @@ const AddForm = (props) => {
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
             {
-                props.errorC && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorC}</div>
+                props.badSubmit && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.badSubmit}</div>
             }
             <button>Submit Smurf</button>
         </form>
@@ -61,7 +60,7 @@ const AddForm = (props) => {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
-        errorC: state.errorC
+        badSubmit: state.badSubmit
     }
 }
 
@@ -71,4 +70,4 @@ export default connect(mapStateToProps, {addSmurf, errorCode})(AddForm)
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
 //2. Replace all instances of the errorMessage static variable with your error message state value. 
 //3. Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when this validation code fails.
-//4. Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+//4. Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summary passed as arguments. Test that a smurf is correctly added to when the form is submitted.
