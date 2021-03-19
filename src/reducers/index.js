@@ -3,26 +3,15 @@ import {
     DISPLAY_SMURFS, 
     MISSING_SMURFS, 
     ADD_SMURF, 
-    REMOVE_SMURF
+    REMOVE_SMURF,
+    ERROR_CODE
 } from '../actions'
 
 export const initialState = {
-    smurfs: [{
-        name: "",
-        nickname: "",
-        position: "",
-        summary: "",
-        id: ""
-    }],
-    newSmurf: [{
-        name: "",
-        nickname: "",
-        position: "",
-        summary: "",
-        id: ""
-    }],
+    smurfs: [],
     isLoading: false,
-    error: ""
+    error: "",
+    errorC: ""
 }
 
 export const reducer = (state=initialState, action) => {
@@ -47,8 +36,8 @@ export const reducer = (state=initialState, action) => {
         case(ADD_SMURF):
             return ({
                 ...state,
-                addSmurf: [
-                    ...state.addSmurf,
+                smurfs: [
+                    ...state.smurfs,
                     action.payload
                 ]
             });
@@ -59,6 +48,11 @@ export const reducer = (state=initialState, action) => {
                     state.smurf.filter(smurfList => smurfList !== action.payload)
                 ]
             });
+        case(ERROR_CODE):
+            return ({
+                ...state,
+                errorC: action.payload
+            })
         default:
             return state;
     }

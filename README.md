@@ -87,7 +87,7 @@ In this challenge, you are to build a Smurfs village database utilizing Redux as
   * [X] Connect the errorMessage, setError and addSmurf actions to the AddForm component.
   * [X] Replace all instances of the errorMessage static variable with your error message state value. 
   * [ ] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when this validation code fails.
-  * [ ] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summary passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+  * [X] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summary passed as arguments. Test that a smurf is correctly added to when the form is submitted.
 
   **Notes:**
 

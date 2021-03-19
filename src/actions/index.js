@@ -5,6 +5,7 @@ export const DISPLAY_SMURFS = "DISPLAY_SMURFS"
 export const MISSING_SMURFS = "MISSING_SMURFS"
 export const ADD_SMURF = "ADD_SMURF"
 export const REMOVE_SMURF = "REMOVE_SMURF"
+export const ERROR_CODE = "ERROR_CODE"
 
 export const fetchSmurfs = () => {
     return dispatch => {
@@ -24,10 +25,9 @@ const newSmurf = []
 
 export const addSmurf = smurf => {
     return dispatch => {
-        dispatch({type:ADD_SMURF})
         axios.post("http://localhost:3333/smurfs", smurf)
         .then(res => {
-            dispatch({type: ADD_SMURF, payload: res.data})
+            dispatch({type: ADD_SMURF, payload: smurf})
         })
         .catch(err => {
             console.log(`Get out of Smurfville ${err}`)
@@ -39,6 +39,13 @@ export const removeSmurf = smurf => {
     return {
         type: REMOVE_SMURF,
         payload: smurf
+    }
+}
+
+export const errorCode = error => {
+    return{
+        type: ERROR_CODE,
+        payload: error
     }
 }
 
