@@ -1,11 +1,66 @@
+import {
+    LOAD_SMURFS, 
+    DISPLAY_SMURFS, 
+    MISSING_SMURFS, 
+    ADD_SMURF, 
+    REMOVE_SMURF,
+    ERROR_CODE
+} from '../actions'
 
 export const initialState = {
+    smurfs: [],
+    isLoading: false,
+    error: "",
+    badSubmit: ""
 }
 
-const reducer = ()=>{
+export const reducer = (state=initialState, action) => {
+    switch(action.type) {
+        case(LOAD_SMURFS):
+            return ({
+                ...state,
+                isLoading: true
+            });
+        case(DISPLAY_SMURFS):
+            return ({
+                ...state,
+                smurfs: action.payload,
+                isLoading: false,
+            });
+        case(MISSING_SMURFS):
+            return ({
+                ...state,
+                isLoading: false,
+                error: action.payload
+            });
+        case(ADD_SMURF):
+            return ({
+                ...state,
+                smurfs: [
+                    ...state.smurfs,
+                    action.payload
+                ]
+            });
+        // case REMOVE_STUFF is for a stretch goal... if I choose to do it
+        case(REMOVE_SMURF):
+            return ({
+                ...state,
+                smurf: [
+                    state.smurf.filter(smurfList => smurfList !== action.payload)
+                ]
+            });
+        // created a second error code so that the first is in response to a bad axios call and this one is if the form doesn't render correctly.
+        case(ERROR_CODE):
+            return ({
+                ...state,
+                badSubmit: action.payload
+            })
+        default:
+            return state;
+    }
 }
 
-export default reducer;
+// export default reducer;
 
 //Task List:
 //1. Adds the following state values into the initialState:
