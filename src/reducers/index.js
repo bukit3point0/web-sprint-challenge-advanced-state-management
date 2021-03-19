@@ -41,6 +41,7 @@ export const reducer = (state=initialState, action) => {
                     action.payload
                 ]
             });
+        // case REMOVE_STUFF is for a stretch goal... if I choose to do it
         case(REMOVE_SMURF):
             return ({
                 ...state,
@@ -48,6 +49,7 @@ export const reducer = (state=initialState, action) => {
                     state.smurf.filter(smurfList => smurfList !== action.payload)
                 ]
             });
+        // created a second error code so that the first is in response to a bad axios call and this one is if the form doesn't render correctly.
         case(ERROR_CODE):
             return ({
                 ...state,

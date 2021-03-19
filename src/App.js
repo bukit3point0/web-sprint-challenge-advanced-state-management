@@ -9,8 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 import {fetchSmurfs} from './actions'
+
+// changed class component to function component for my own ease
 const App = props => {
-  
+
+  // imported the smurfs here from the actions  
   useEffect(() => {
     props.fetchSmurfs()
   },[])

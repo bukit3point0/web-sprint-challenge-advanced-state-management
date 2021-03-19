@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {addSmurf, errorCode} from '../actions'
 
 const AddForm = (props) => {
+
+    // slice of state for the new Smurf, gives it an id at "birth"
     const [state, setState] = useState({
         name: "",
         position: "",
@@ -11,7 +13,7 @@ const AddForm = (props) => {
         description: "",
         id: Date.now()
     });
-    console.log(state)
+    
 
     const handleChange = e => {
         setState({
@@ -24,11 +26,11 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
+            // switched everything over to being called from the props
             props.errorCode("Name, position, and nickname fields are required.")
+            // added a submit if the above conditions are met
         } else {props.addSmurf(state)}
     }
-    console.log(`error code`, props.badSubmit)
-    // const errorMessage = "";
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -57,9 +59,9 @@ const AddForm = (props) => {
     </section>);
 }
 
+// the only slice of state being used is badSubmit. the smurfs are being uploaded from there and used elsewhere, but not called here.
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfs,
         badSubmit: state.badSubmit
     }
 }

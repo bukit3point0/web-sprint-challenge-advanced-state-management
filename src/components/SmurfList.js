@@ -4,6 +4,7 @@ import Smurf from './Smurf';
 
  const SmurfList = props => {
     
+    // removed the initial dummy data, kept it here for reference
     // const testSmurf = {
     //     id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
     //     name:'Poppa Smurf',

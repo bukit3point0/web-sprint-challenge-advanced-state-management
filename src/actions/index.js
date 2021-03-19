@@ -34,7 +34,7 @@ export const addSmurf = smurf => {
         })
     }
 }
-
+// created this and its reducer counterpart for a stretch goal.
 export const removeSmurf = smurf => {
     return {
         type: REMOVE_SMURF,
