@@ -14,6 +14,13 @@ export const initialState = {
         summary: "",
         id: ""
     }],
+    newSmurf: [{
+        name: "",
+        nickname: "",
+        position: "",
+        summary: "",
+        id: ""
+    }],
     isLoading: false,
     error: ""
 }
@@ -40,8 +47,8 @@ export const reducer = (state=initialState, action) => {
         case(ADD_SMURF):
             return ({
                 ...state,
-                smurf: [
-                    ...state.smurf,
+                addSmurf: [
+                    ...state.addSmurf,
                     action.payload
                 ]
             });

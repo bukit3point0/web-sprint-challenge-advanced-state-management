@@ -24,7 +24,8 @@ const newSmurf = []
 
 export const addSmurf = smurf => {
     return dispatch => {
-        axios.post("http://localhost:3333/smurfs", newSmurf)
+        dispatch({type:ADD_SMURF})
+        axios.post("http://localhost:3333/smurfs", smurf)
         .then(res => {
             dispatch({type: ADD_SMURF, payload: res.data})
         })
